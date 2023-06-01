@@ -1,0 +1,23 @@
+*{
+    font-family: sans-serif;
+}
+button{
+    height:40px;
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.container{
+    margin: 20px;
+    width: 100vw;
+    display: flex;
+    flex-flow: row wrap;
+    gap:20px;
+}
+.container div{
+    width: 300px;
+    border: 1px  solid grey ;
+    padding: 20px;
+}
