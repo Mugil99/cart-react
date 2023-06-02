@@ -30,7 +30,7 @@ const CartPage=()=>{
             </div>
             <h2>Total Price: {totalPrice}</h2>
             <button onClick={()=>{dispatch(checkout()) }} style={{margin:"5px"}}>Checkout</button>
-            <button onClick={()=>navigate('/')} style={{margin:"5px"}}>Homepage</button>
+            <button onClick={()=>navigate('/cart-react')} style={{margin:"5px"}}>Homepage</button>
         
         </div>
     )

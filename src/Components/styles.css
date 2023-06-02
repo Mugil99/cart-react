@@ -9,6 +9,9 @@ button{
     border-radius: 5px;
     font-size: 1rem;
 }
+button:hover{
+    cursor: pointer;
+}
 .container{
     margin: 20px;
     width: 100vw;
@@ -20,4 +23,7 @@ button{
     width: 300px;
     border: 1px  solid grey ;
     padding: 20px;
+}
+.styling{
+    background-color: rgb(182, 178, 178);
 }

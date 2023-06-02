@@ -1,14 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchProducts } from "../redux/actions/apiActions";
 import { addToCart } from "../redux/actions/cartActions";
 import {useNavigate} from 'react-router-dom';
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const HomePage=()=>{
     let navigate=useNavigate();
     const dispatch = useDispatch();
     const{loading,products,error}=useSelector(state=>state.products);
-
+    const [applyClass,setApplyClass]=useState(false)
+    function Disable(product){
+        dispatch(addToCart(product))
+        setApplyClass(true)
+    }
 
     useEffect(()=>{
         dispatch(fetchProducts());
@@ -19,7 +24,7 @@ const HomePage=()=>{
 
     return(
         <div>
-            <button onClick={()=>navigate('/cart')}>Cart Page</button>
+            <button onClick={()=>navigate('cart')}>Cart Page</button>
             <div className="container">
     {
         products.map((product,index)=>(
@@ -36,7 +41,7 @@ const HomePage=()=>{
             <p><strong>Brand:</strong>{product.brand}</p>
             <p><strong>category:</strong>{product.category}</p>
             <br></br>
-            <button onClick={()=>{dispatch(addToCart(product))}}>Add to Cart</button>
+            <button className={applyClass?"styling":""} onClick={()=>{ Disable(product) }}>Add to Cart</button>
            </div>
         
         ))
