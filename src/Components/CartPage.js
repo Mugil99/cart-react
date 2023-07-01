@@ -11,10 +11,12 @@ const CartPage=()=>{
    
     return(
         <div>
-          <div className="container">  
+          <h1 style={{marginLeft:'40vw'}}>My Cart</h1>
+         <div className='cart'>
+         <div className="container1">  
             {
                cart.map(item=>(
-                <div key={item.id}>
+                <div key={item.id} className="card">
                    <h3>{item.title}</h3>
                    <img src={item.thumbnail} alt={item.title} style={{width:"200px"}}/> 
                             <p><strong>Description:</strong>{item.description}</p>
@@ -28,10 +30,12 @@ const CartPage=()=>{
                ))
             }
             </div>
+            <div className="checkout">
             <h2>Total Price: {totalPrice}</h2>
-            <button onClick={()=>{dispatch(checkout()) }} style={{margin:"5px"}}>Checkout</button>
-            <button onClick={()=>navigate('/cart-react')} style={{margin:"5px"}}>Homepage</button>
+            <button className='btn' onClick={()=>{dispatch(checkout()) }} style={{margin:"5px"}}>Checkout</button>
+            </div>
         
+         </div>
         </div>
     )
 }

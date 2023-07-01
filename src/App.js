@@ -5,14 +5,15 @@ import HomePage from './Components/HomePage';
 import CartPage from './Components/CartPage';
 import {Routes,Route} from 'react-router-dom';
 import './Components/styles.css'
+import Nav from './Components/Nav';
 
 function App() {
   return (
    <div>
-    
+    <Nav/>
     <Routes>
-        <Route path='/cart-react' element={<HomePage/>}/>
-        <Route path='/cart-react/cart' element={<CartPage/>}/>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/cart' element={<CartPage/>}/>
     </Routes>
    </div>
   );

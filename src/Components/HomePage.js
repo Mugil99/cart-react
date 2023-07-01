@@ -3,16 +3,16 @@ import { useDispatch,useSelector } from "react-redux";
 import { fetchProducts } from "../redux/actions/apiActions";
 import { addToCart } from "../redux/actions/cartActions";
 import {useNavigate} from 'react-router-dom';
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const HomePage=()=>{
     let navigate=useNavigate();
     const dispatch = useDispatch();
+    const {cart}=useSelector(state=>state.cart);
     const{loading,products,error}=useSelector(state=>state.products);
-    const [applyClass,setApplyClass]=useState(false)
+    // const [applyClass,setApplyClass]=useState(false)
     function Disable(product){
         dispatch(addToCart(product))
-        setApplyClass(true)
+        // setApplyClass(true)
     }
 
     useEffect(()=>{
@@ -24,12 +24,12 @@ const HomePage=()=>{
 
     return(
         <div>
-            <button onClick={()=>navigate('cart')}>Cart Page</button>
-            <div className="container">
+         <h1 style={{marginLeft:'40vw'}}>All Items</h1>
+            <div className="container" style={{width:'fit-content'}}>
     {
         products.map((product,index)=>(
             
-            <div key={product.id}>
+            <div key={product.id} className="card">
                 
             <h3>{product.title}</h3>
             <img src={product.thumbnail} alt={product.title} style={{width:"200px"}} />
@@ -41,7 +41,7 @@ const HomePage=()=>{
             <p><strong>Brand:</strong>{product.brand}</p>
             <p><strong>category:</strong>{product.category}</p>
             <br></br>
-            <button className={applyClass?"styling":""} onClick={()=>{ Disable(product) }}>Add to Cart</button>
+            <button className={(cart.some(item=>item.id===product.id))?"styling":""} onClick={()=>{ Disable(product) }}>Add to Cart</button>
            </div>
         
         ))
